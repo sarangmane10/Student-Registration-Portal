@@ -58,7 +58,7 @@ public class RegistrationController {
 		}
 		return "success";
 	}
-	
+	    
 	@RequestMapping("/delete/{id}")
 	String delete(@PathVariable("id") int id) {
 		m.deleteStudent(id);
