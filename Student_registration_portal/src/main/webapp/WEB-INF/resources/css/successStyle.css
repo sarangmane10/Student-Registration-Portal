@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+         body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .btn-learn {
+            background-color: #007BFF;
+            color: white;
+        }
+        .btn-contact {
+            background-color: #28A745;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+	.popup button {
+	    margin-top: 15px;
+	    padding: 10px 20px;
+	    border: none;
+	    background-color: red;
+	    color: white;
+	    cursor: pointer;
+	    border-radius: 5px;
+	}
+ 
