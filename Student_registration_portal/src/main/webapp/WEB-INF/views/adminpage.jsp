@@ -25,7 +25,9 @@
             <th>Course</th>
             <th>Birthday</th>
             <th>Gender</th>
+            <th>Profile pic</th>
             <th>Action</th>
+            
         </tr>
         
         <c:forEach var="student" items="${students}">
@@ -38,6 +40,7 @@
                 <td>${student.course}</td>               
                 <td>${student.birthdayDate}</td>
                 <td>${student.gender}</td>
+                <td> <img src="data:image/png;base64,${student.base64Image}" alt="Image Not Found" width="100px" height="100px"  /></td>
                 <td><button onclick="window.location.href='<c:url value="delete/${ student.id}"/>'"> delete</button>
                 <button style="background-color: green" onclick="window.location.href='<c:url value="edit/${ student.id}"/>'"> edit</button></td>
             </tr>

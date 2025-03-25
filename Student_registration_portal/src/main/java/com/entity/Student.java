@@ -2,15 +2,17 @@ package com.entity;
 
 
 
+import java.sql.Blob;
 import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
-@Entity()
+@Entity
 @Table(name="StudentInfo")
 public class Student {
 	
@@ -24,14 +26,30 @@ public class Student {
 	private String  emailAddress;
 	private String  phoneNumber;
 	private String course;
-	
+	@Lob
+	byte []profilePic;
 
 	public Student() {
 		
 	}
 
 	
-	public Student(int id,String firstName, String lastName, Date birthdayDate, String gender, String emailAddress,String phoneNumber,String course) {
+	public Student(int id,String firstName, String lastName, Date birthdayDate, String gender, String emailAddress,String phoneNumber,
+			String course,byte[] bs) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.id=id;
+//		this.birthdayDate = new Date(birthdayDate.getTime());
+		this.birthdayDate=birthdayDate;
+		this.gender = gender;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+		this.course=course;
+		this.profilePic=bs;
+	}
+	
+	public Student(int id,String firstName, String lastName, Date birthdayDate, String gender, String emailAddress,String phoneNumber,
+			String course) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.id=id;
@@ -42,6 +60,7 @@ public class Student {
 		this.phoneNumber = phoneNumber;
 		this.course=course;
 	}
+	
 
 	
 	public int getId() {
@@ -122,6 +141,16 @@ public class Student {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+
+	public byte[] getProfileImage() {
+		return profilePic;
+	}
+
+
+	public void setProfileImage(byte[] profileImage) {
+		this.profilePic = profileImage;
 	}
 
 

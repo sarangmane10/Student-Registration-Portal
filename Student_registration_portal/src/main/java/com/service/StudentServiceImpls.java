@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,11 @@ public class StudentServiceImpls implements StudentService {
 
 	@Override 
 	public boolean saveStudent(StudentModel studentModel) {
-
+		 
+//	        model.addAttribute("imageBase64", base64Image);
 		Student student = new Student(studentModel.getId(),studentModel.getFirstName(), studentModel.getLastName(),
 				studentModel.getBirthdayDate(), studentModel.getGender(), studentModel.getEmailAddress(),
-				studentModel.getPhoneNumber(), studentModel.getCourse());
+				studentModel.getPhoneNumber(), studentModel.getCourse(),studentModel.getProfilePic().getBytes());
 		return studentdao.saveStudent(student);
 
 	}
@@ -33,8 +35,28 @@ public class StudentServiceImpls implements StudentService {
 
 		for (Student student : students) {
 			studentModel.add(new StudentModel(student.getId(),student.getGender(), student.getEmailAddress(), student.getPhoneNumber(),
-					student.getFirstName(), student.getLastName(), student.getBirthdayDate(), student.getCourse()));
+					student.getFirstName(), student.getLastName(), student.getBirthdayDate(), student.getCourse(),Base64.getEncoder().encodeToString(student.getProfileImage() )));
 		}
+		
 		return studentModel;
+	}
+	
+	public StudentModel getSingleStudentDetails(int id) {
+		Student student=studentdao.getSingleStudent(id);
+		
+		 return new StudentModel (student.getId(),student.getGender(), student.getEmailAddress(), student.getPhoneNumber(),
+				student.getFirstName(), student.getLastName(), student.getBirthdayDate(), student.getCourse());
+	}
+
+	@Override
+	public boolean deleteStudent(int id) {
+		
+		return studentdao.deleteStudent(id);
+	}
+
+	@Override
+	public boolean check(StudentModel model) {
+		// TODO Auto-generated method stub
+		return studentdao.check(model);
 	}
 }

@@ -4,6 +4,7 @@ package com.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,8 +28,6 @@ public class RegistrationController {
 
 	@Autowired
 	StudentService studentService;
-	@Autowired
-	StudentDAO m;
 	@RequestMapping("/home")
 	String index() {
 		return "home";
@@ -39,7 +38,7 @@ public class RegistrationController {
 		
 		System.out.println(studentModel);
 		System.out.println(studentModel.getId());
-		boolean check=m.check(studentModel);
+		boolean check=studentService.check(studentModel);
 		if(!check) {
 			model.addAttribute("message","Failed..");
 			model.addAttribute("reasone", "Email is already in use.!");
@@ -61,13 +60,15 @@ public class RegistrationController {
 	    
 	@RequestMapping("/delete/{id}")
 	String delete(@PathVariable("id") int id) {
-		m.deleteStudent(id);
+		studentService.deleteStudent(id);
 		return "redirect:/admin";
 	}
 	
 	@RequestMapping("/admin")
 	String getStudentDetails(Model model) {
-		model.addAttribute("students",studentService.getStudentDetails());
+		List<StudentModel>st= studentService.getStudentDetails();
+//		System.out.println(st.get(0).getBase64Image()+"\n"+"hiie");
+		model.addAttribute("students",st);
 		return "adminpage";
 	}
 	
@@ -79,32 +80,29 @@ public class RegistrationController {
 	@RequestMapping("/edit/{id}")
 	String edit(@PathVariable("id") int id,Model model)
 	{
-		StudentModel student =m.getSingleStudent(id);
+		StudentModel student =studentService.getSingleStudentDetails(id);
 		model.addAttribute("student",student);
 		
 		return "editForm";
 	}
-	@RequestMapping("/upload")
-	String upload() {
-		return "FileUpload";
-	}
-	@RequestMapping(value="/view",method = RequestMethod.POST)
-	String view(@RequestParam("profile") MultipartFile file,HttpSession s ,Model m) {
-		
-		String path=s.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+file.getOriginalFilename();
-		System.out.println(path);
-		 m.addAttribute("img",file.getOriginalFilename());
-		try {
-			byte []data=file.getBytes();
-			FileOutputStream fl=new FileOutputStream(path);
-			fl.write(data);
-			fl.close();
-			System.out.println("Success");
-			} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "view";
-	}
+	
+//	@RequestMapping(value="/view",method = RequestMethod.POST)
+//	String view(@RequestParam("profile") MultipartFile file,HttpSession s ,Model m) {
+//		
+//		String path=s.getServletContext().getRealPath("/")+"WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+file.getOriginalFilename();
+//		System.out.println(path);
+//		 m.addAttribute("img",file.getOriginalFilename());
+//		try {
+//			byte []data=file.getBytes();
+//			FileOutputStream fl=new FileOutputStream(path);
+//			fl.write(data);
+//			fl.close();
+//			System.out.println("Success");
+//			} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return "view";
+//	}
 	
 }

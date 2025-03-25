@@ -2,6 +2,8 @@ package com.model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class StudentModel {
 	private String  gender;
 	private String  emailAddress;
@@ -11,7 +13,8 @@ public class StudentModel {
 	private Date  birthdayDate;
 	private String course;
 	private int id;
-	
+	CommonsMultipartFile profilePic;
+	private String imageBase64;
 	
 	public int getId() {
 		return id;
@@ -25,6 +28,30 @@ public class StudentModel {
 		
 	}
 	
+	public StudentModel(int id,String gender, String emailAddress, String phoneNumber, String firstName, String lastName,
+			Date birthdayDate, String course,CommonsMultipartFile profilePic) {
+		this.gender = gender;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthdayDate = birthdayDate;
+		this.course = course;
+		this.id=id;
+		this.profilePic=profilePic;
+	}
+	public StudentModel(int id,String gender, String emailAddress, String phoneNumber, String firstName, String lastName,
+			Date birthdayDate, String course,String imageBase64) {
+		this.gender = gender;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthdayDate = birthdayDate;
+		this.course = course;
+		this.id=id;
+		this.imageBase64=imageBase64;
+	}
 	public StudentModel(int id,String gender, String emailAddress, String phoneNumber, String firstName, String lastName,
 			Date birthdayDate, String course) {
 		this.gender = gender;
@@ -78,6 +105,25 @@ public class StudentModel {
 	public void setCourse(String cource) {
 		this.course = cource;
 	}
+	
+	public CommonsMultipartFile getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(CommonsMultipartFile profilePic) {
+		this.profilePic = profilePic;
+	}
+	
+	
+
+	public String getBase64Image() {
+		return imageBase64;
+	}
+
+	public void setBase64Image(String imageBase64) {
+		this.imageBase64 = imageBase64;
+	}
+
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", birthdayDate=" + birthdayDate

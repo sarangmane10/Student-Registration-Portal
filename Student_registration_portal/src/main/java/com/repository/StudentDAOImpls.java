@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Student;
 import com.model.StudentModel;
- 
+
 @Repository
 public class StudentDAOImpls implements StudentDAO {
 	static SessionFactory factory;
@@ -30,8 +30,9 @@ public class StudentDAOImpls implements StudentDAO {
 	public boolean check(StudentModel m) {
 		Session session = getSessionFactory().openSession();
 		System.out.println(m.getId());
-		if(m.getId()!=0) return true;
-		String sql = "SELECT * FROM studentInfo where emailAddress='" + m.getEmailAddress() + "'";
+		if (m.getId() != 0)
+			return true;
+		String sql = "SELECT firstName FROM studentInfo where emailAddress='" + m.getEmailAddress() + "'";
 
 		Query query = session.createNativeQuery(sql, Student.class);
 		if (!query.getResultList().isEmpty())
@@ -41,7 +42,7 @@ public class StudentDAOImpls implements StudentDAO {
 	}
 
 	public boolean saveStudent(Student student) {
-System.out.println(student);
+		System.out.println(student);
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
@@ -62,7 +63,7 @@ System.out.println(student);
 		session.beginTransaction();
 		Student student;
 		try {
-			student=session.get(Student.class,id);
+			student = session.get(Student.class, id);
 			session.delete(student);
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -73,17 +74,16 @@ System.out.println(student);
 		}
 		return true;
 	}
-	
-	public StudentModel getSingleStudent(int id) {
+
+	public Student getSingleStudent(int id) {
 
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		Student student;
 		try {
-			student=session.get(Student.class,id);
+			student = session.get(Student.class, id);
 			session.getTransaction().commit();
-			return new StudentModel (student.getId(),student.getGender(), student.getEmailAddress(), student.getPhoneNumber(),
-					student.getFirstName(), student.getLastName(), student.getBirthdayDate(), student.getCourse());
+			return student;
 		} catch (Exception e) {
 			return null;
 
