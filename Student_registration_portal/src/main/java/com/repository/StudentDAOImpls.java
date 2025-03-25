@@ -35,7 +35,7 @@ public class StudentDAOImpls implements StudentDAO {
 		String sql = "SELECT firstName FROM studentInfo where emailAddress='" + m.getEmailAddress() + "'";
 
 		Query query = session.createNativeQuery(sql, Student.class);
-		if (!query.getResultList().isEmpty())
+		if (query.getMaxResults()>0)
 			return false;
 		session.close();
 		return true;
