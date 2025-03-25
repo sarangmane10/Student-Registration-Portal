@@ -14,5 +14,5 @@ public interface StudentService {
 
 	public boolean deleteStudent(int id);
 
-	public boolean check(StudentModel model);
+	public boolean checkPresent(StudentModel model);
 }

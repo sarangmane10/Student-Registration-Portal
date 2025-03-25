@@ -11,7 +11,7 @@ public interface StudentDAO {
 
 	public List<Student> getStudentDetails();
 
-	public boolean check(StudentModel m);
+	public boolean checkPresent(StudentModel m);
 
 	public boolean deleteStudent(int id);
 

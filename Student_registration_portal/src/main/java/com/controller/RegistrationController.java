@@ -38,8 +38,8 @@ public class RegistrationController {
 		
 		System.out.println(studentModel);
 		System.out.println(studentModel.getId());
-		boolean check=studentService.check(studentModel);
-		if(!check) {
+		boolean check=studentService.checkPresent(studentModel);
+		if(check) {
 			model.addAttribute("message","Failed..");
 			model.addAttribute("reasone", "Email is already in use.!");
 			return "success";

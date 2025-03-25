@@ -55,8 +55,8 @@ public class StudentServiceImpls implements StudentService {
 	}
 
 	@Override
-	public boolean check(StudentModel model) {
+	public boolean checkPresent(StudentModel model) {
 		// TODO Auto-generated method stub
-		return studentdao.check(model);
+		return studentdao.checkPresent(model);
 	}
 }

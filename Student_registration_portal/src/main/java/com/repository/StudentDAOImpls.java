@@ -27,15 +27,16 @@ public class StudentDAOImpls implements StudentDAO {
 		return factory;
 	}
 
-	public boolean check(StudentModel m) {
+	public boolean checkPresent(StudentModel m) {
 		Session session = getSessionFactory().openSession();
 		System.out.println(m.getId());
 		if (m.getId() != 0)
-			return true;
-		String sql = "SELECT firstName FROM studentInfo where emailAddress='" + m.getEmailAddress() + "'";
+			return false;
+		String sql = "SELECT * FROM studentInfo where emailAddress='" + m.getEmailAddress() + "'";
 
 		Query query = session.createNativeQuery(sql, Student.class);
-		if (query.getMaxResults()>0)
+		System.out.println((query.getResultList()));
+		if (query.getResultList().isEmpty())
 			return false;
 		session.close();
 		return true;
