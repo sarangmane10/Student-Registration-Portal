@@ -1,6 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+#loginBtn{
+	color:#003580;
+}
+.glyfi:hover{
+	cursor: pointer;
+}
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #f1f1f1;
+    padding: 5px;
+}
+
+.toggle-buttons button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.toggle-buttons .active {
+    background: #004aad;
+    color: white;
+}
+
+
+
+
 /* Apply gradient background */
-.gradient-custom {
-    background: linear-gradient(to bottom right, #f78ce0, #ff6b81);
+html,body{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
+, #0073e6);
 }
 
 /* Style the registration form container */

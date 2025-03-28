@@ -13,17 +13,22 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<title>Registration Form</title>
+<title>Update Form</title>
 </head>
 <body>
-	<section class="vh-100 gradient-custom">
+	<section class="vh-100 gradient-custom" style="display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
+, #0073e6);">
 		<div class="container py-5 h-100">
-			<div class="row justify-content-center align-items-center h-100">
+			<div class="row justify-content-center align-items-center h-100 text-center">
 				<div class="col-12 col-lg-9 col-xl-7">
 					<div class="card shadow-2-strong card-registration"
 						style="border-radius: 15px;">
 						<div class="card-body p-4 p-md-5">
-							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Edit Registration Form
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Edit Details
 							</h3>
 
 							<form action="${pageContext.request.contextPath }/save"

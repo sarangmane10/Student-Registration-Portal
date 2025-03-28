@@ -40,7 +40,7 @@ public class RegistrationController {
 		System.out.println(studentModel.getId());
 		boolean check=studentService.checkPresent(studentModel);
 		if(check) {
-			model.addAttribute("message","Failed..");
+			model.addAttribute("message","Registration Failed..");
 			model.addAttribute("reasone", "Email is already in use.!");
 			return "success";
 		}
@@ -64,18 +64,24 @@ public class RegistrationController {
 		return "redirect:/admin";
 	}
 	
-	@RequestMapping("/admin")
+	@RequestMapping("/adminLogin")
 	String getStudentDetails(Model model) {
+		
+		return "adminLogin";
+	}
+	
+	@RequestMapping("/adminPage")
+	String AdminPage(Model model) {
 		List<StudentModel>st= studentService.getStudentDetails();
 //		System.out.println(st.get(0).getBase64Image()+"\n"+"hiie");
 		model.addAttribute("students",st);
 		return "adminpage";
 	}
 	
-	@RequestMapping("/registrationform")
+	@RequestMapping("/studentLogin")
 	String save() {
 		
-		return "registrationForm";
+		return "studentLogin";
 	}
 	@RequestMapping("/edit/{id}")
 	String edit(@PathVariable("id") int id,Model model)
@@ -85,6 +91,13 @@ public class RegistrationController {
 		
 		return "editForm";
 	}
+	
+	@RequestMapping("/studentRegistration")
+	String register()
+	{
+		return "studentReistration";
+	}
+	
 	
 //	@RequestMapping(value="/view",method = RequestMethod.POST)
 //	String view(@RequestParam("profile") MultipartFile file,HttpSession s ,Model m) {

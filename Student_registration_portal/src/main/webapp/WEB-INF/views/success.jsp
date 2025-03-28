@@ -12,7 +12,7 @@
 </head>
 <body>
      <div id="popupMessage" class="popup">
-        <p> Registration ${message }!</p>
+        <p>${message }!</p>
         <p> ${reasone }</p>
         <button onclick="window.location.href='<c:url value="/home"/>'">Close</button>
         </div>
