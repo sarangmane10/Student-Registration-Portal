@@ -2,11 +2,7 @@
 package com.controller;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
-
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.service.StudentServiceImpls;
@@ -17,25 +13,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.model.StudentModel;
-import com.repository.StudentDAO;
-import com.service.StudentService;
 
 @Controller
 public class RegistrationController {
 
-    private final StudentServiceImpls studentServiceImpls;
 
 	@Autowired
-	StudentService studentService;
+	private StudentServiceImpls studentService;
 
-    RegistrationController(StudentServiceImpls studentServiceImpls) {
-        this.studentServiceImpls = studentServiceImpls;
-    }
+
 	@RequestMapping("/home")
 	String index() {
 		return "home";
