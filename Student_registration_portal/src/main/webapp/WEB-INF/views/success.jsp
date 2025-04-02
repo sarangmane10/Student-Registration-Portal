@@ -14,12 +14,15 @@
      <div id="popupMessage" class="popup">
         <p>${message }!</p>
         <p> ${reasone }</p>
+        
+        <c:if test="${url=='admin'}">
+        <button onclick="window.location.href='<c:url value="/adminValidate"/>'">Close</button>
+        </c:if>
+        <c:if test="${url!='admin'}">
         <button onclick="window.location.href='<c:url value="/home"/>'">Close</button>
+        </c:if>
+       
         </div>
-    <!-- <script>
-        function closePopup() {
-        	window.location = "home";
-        }
-    </script>  -->
+    
 </body>
 </html>

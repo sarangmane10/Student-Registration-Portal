@@ -47,7 +47,7 @@
         </c:forEach>
         
     </table>
-    <button style="margin-top: 10px" onclick="window.location.href='<c:url value="home"/>'">Back</button>
+    <button style="margin-top: 10px" onclick="window.location.href='<c:url value="logout"/>'">Log Out</button>
     </div>
 </body>
 </html>
