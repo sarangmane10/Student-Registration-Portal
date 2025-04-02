@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/homeStyle.css">
 </head>
 <body>
-    <div class="container">
+    <div class="popup">
         <h1>WELCOME</h1>
         <p>This is Student Registration Portal</p>
         <button class="btn-learn" onclick="window.location.href='<c:url value="studentLogin"/>'">Student</button>

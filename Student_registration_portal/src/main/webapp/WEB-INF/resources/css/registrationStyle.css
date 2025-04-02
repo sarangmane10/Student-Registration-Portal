@@ -61,8 +61,7 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
-, #0073e6);
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
 }
 
 /* Style the registration form container */

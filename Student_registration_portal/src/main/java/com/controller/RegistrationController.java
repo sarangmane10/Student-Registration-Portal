@@ -38,7 +38,7 @@ public class RegistrationController {
 		if(check) {
 			model.addAttribute("message","Registration Failed..");
 			model.addAttribute("reasone", "Email is already in use.!");
-			return "success";
+			return "status";
 		}
 		boolean bool=studentService.saveStudent(studentModel);
 		if(bool && studentModel.getId()!=0) {
@@ -58,7 +58,7 @@ public class RegistrationController {
 //			model.addAttribute("url",request.getHeader("Referer"));
 //		else model.addAttribute("url",null);
 //		System.out.println(arr[arr.length-2]);
-		return "success";
+		return "status";
 	}
 	    
 	@RequestMapping("/delete/{id}")
@@ -97,7 +97,7 @@ public class RegistrationController {
 		else {
 			model.addAttribute("message","Login Failed.."); 
 			model.addAttribute("reasone", "Invalid Credentials.!");
-			return "success";
+			return "status";
 		}
 	}
 	
